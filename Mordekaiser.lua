@@ -104,7 +104,7 @@ OnTick(function (myHero)
           if Mix:Mode() == "Harass" then
             if MordekaiserMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 700) then
 				if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSpell(_Q)
                                 end
             end
 
@@ -137,7 +137,7 @@ OnTick(function (myHero)
 
             if MordekaiserMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 700) then
 				if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSpell(_Q)
                                 end
               end
 
@@ -190,7 +190,7 @@ OnTick(function (myHero)
                 
                 if IsReady(_Q) and ValidTarget(enemy, 700) and MordekaiserMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
 		         if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSpell(_Q)
 		         end
                 end 
 
@@ -203,7 +203,7 @@ OnTick(function (myHero)
       if Mix:Mode() == "LaneClear" then
       	  for _,closeminion in pairs(minionManager.objects) do
 	        if MordekaiserMenu.LaneClear.Q:Value() and Ready(_Q) and ValidTarget(closeminion, 700) then
-	        	CastTargetSpell(closeminion, _Q)
+	        	CastSpell(_Q)
                 end
 
                 if MordekaiserMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 700) then
@@ -226,7 +226,7 @@ OnTick(function (myHero)
         --AutoMode
         if MordekaiserMenu.AutoMode.Q:Value() then        
           if Ready(_Q) and ValidTarget(target, 700) then
-		      CastTargetSpell(target, _Q)
+		      CastSpell(_Q)
           end
         end 
         if MordekaiserMenu.AutoMode.W:Value() then        
