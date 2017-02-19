@@ -252,7 +252,7 @@ OnTick(function (myHero)
         end
                 
 	--AUTO GHOST
-	if WarwickMenu.AutoMode.Ghost:Value() then
+	if MordekaiserMenu.AutoMode.Ghost:Value() then
 		if GetCastName(myHero, SUMMONER_1) == "SummonerHaste" and Ready(SUMMONER_1) then
 			CastSpell(SUMMONER_1)
 		elseif GetCastName(myHero, SUMMONER_2) == "SummonerHaste" and Ready(SUMMONER_2) then
