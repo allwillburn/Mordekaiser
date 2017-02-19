@@ -43,6 +43,7 @@ MordekaiserMenu.Combo:Boolean("Cutlass", "Use Cutlass", true)
 MordekaiserMenu.Combo:Boolean("Tiamat", "Use Tiamat", true)
 MordekaiserMenu.Combo:Boolean("BOTRK", "Use BOTRK", true)
 MordekaiserMenu.Combo:Boolean("RHydra", "Use RHydra", true)
+MordekaiserMenu.Combo:Boolean("THydra", "Use THydra", true)
 MordekaiserMenu.Combo:Boolean("YGB", "Use GhostBlade", true)
 MordekaiserMenu.Combo:Boolean("Gunblade", "Use Gunblade", true)
 MordekaiserMenu.Combo:Boolean("Randuins", "Use Randuins", true)
@@ -90,7 +91,8 @@ OnTick(function (myHero)
         local BOTRK = GetItemSlot(myHero, 3153)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
-
+         local THydra = GetItemSlot(myHero, 3748)
+		
 	--AUTO LEVEL UP
 	if MordekaiserMenu.AutoMode.Level:Value() then
 
@@ -131,8 +133,8 @@ OnTick(function (myHero)
 			 CastTargetSpell(target, Cutlass)
             end
 
-            if MordekaiserMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
-			 CastSpell(_E)
+            if MordekaiserMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 675) then
+			 CastSkillShot(_E, target)
 	    end
 
             if MordekaiserMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 700) then
@@ -152,6 +154,10 @@ OnTick(function (myHero)
             if MordekaiserMenu.Combo.RHydra:Value() and RHydra > 0 and Ready(RHydra) and ValidTarget(target, 400) then
 			CastSpell(RHydra)
             end
+			
+	    if MordekaiserMenu.Combo.THydra:Value() and THydra > 0 and Ready(THydra) and ValidTarget(target, 400) then
+			CastSpell(THydra)
+            end	
 
 	    if MordekaiserMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 700) then
 			CastSpell(_W)
@@ -159,7 +165,7 @@ OnTick(function (myHero)
 	    
 	    
             if MordekaiserMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 700) and (EnemiesAround(myHeroPos(), 700) >= MordekaiserMenu.Combo.RX:Value()) then
-			CastSkillShot(_R, target)
+			CastTargetSpell(target, _R)
             end
 
           end
@@ -194,8 +200,8 @@ OnTick(function (myHero)
 		         end
                 end 
 
-                if IsReady(_E) and ValidTarget(enemy, 187) and MordekaiserMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
-		                      CastSpell(_E)
+                if IsReady(_E) and ValidTarget(enemy, 675) and MordekaiserMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
+		                      CastSkillShot(_E, target)
   
                 end
       end
@@ -210,8 +216,8 @@ OnTick(function (myHero)
 	        	CastSpell(_W)
 	        end
 
-                if MordekaiserMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 187) then
-	        	CastSpell(_E)
+                if MordekaiserMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 675) then
+	        	CastSkillShot(_E, target)
 	        end
 
                 if MordekaiserMenu.LaneClear.Tiamat:Value() and ValidTarget(closeminion, 350) then
@@ -235,13 +241,13 @@ OnTick(function (myHero)
           end
         end
         if MordekaiserMenu.AutoMode.E:Value() then        
-	  if Ready(_E) and ValidTarget(target, 125) then
-		      CastSpell(_E)
+	  if Ready(_E) and ValidTarget(target, 675) then
+		      CastSkillShot(_E, target)
 	  end
         end
         if MordekaiserMenu.AutoMode.R:Value() then        
 	  if Ready(_R) and ValidTarget(target, 700) then
-		      CastSpell(_R)
+		      CastTargetSpell(target, _R)
 	  end
         end
                 
